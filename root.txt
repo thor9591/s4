@@ -1,0 +1,86 @@
+//s4
+//Q.h
+#include <stdio.h>
+int front = -1, rear = -1;
+int q[50];
+void enqueue(int data, int l) // Enqueue for inserting data
+{
+if (rear == l - 1)
+{
+printf("Queue is full");
+}
+else if ((front == -1) && (rear == -1))
+{
+front = rear = 0;
+q[rear] = data;
+}
+else
+{
+rear++;
+q[rear] = data;
+}
+}
+void display()
+{
+int i;
+for (i = front; i <= rear; i++)
+{
+printf("\n%d", q[i]);
+}
+}
+void reverse() // reverse function for reversing the data
+{
+int i, j, t;
+for (i = front, j = rear; i < j; i++, j--)
+{
+t = q[i];
+q[i] = q[j];
+q[j] = t;
+}
+}
+
+
+//reverseQ.c
+#include<stdio.h>
+#include "Q.h"
+void main()
+{
+int n, i = 0, t;
+printf("Enter the size of Queue");
+scanf("%d", &n);
+printf("\nEnter the data for Queue");
+while (i < n)
+{
+scanf("%d", &t);
+enqueue(t, n);
+i++;
+}
+printf("\nQueue which you have entered:-");
+display();
+reverse();
+printf("\nQueue after reversing:-");
+display();
+}
+
+//cc filename.h
+//cc filename.c
+//  ./a.out
+
+
+
+//OUTPUT:
+//Enter the size of Queue4
+//Enter the data for Queue2
+//5
+//6
+//10
+//Queue which you have entered:-
+//2
+//5
+//6
+//10
+//Queue after reversing:-
+//10
+//6
+//5
+//2
